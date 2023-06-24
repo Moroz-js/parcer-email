@@ -13,11 +13,11 @@ def email(companies, pureCompanies):
         url = company["site"]
         print(url)
         if url not in exceptions:
-            driver = create_webdriver()
             try:
                 response = requests.get(url)
                 response.raise_for_status()
                 try:
+                    driver = create_webdriver()
                     driver.get(url)
                     element = WebDriverWait(driver, 1).until(
                         lambda x: x.find_element(By.CSS_SELECTOR, 'a[href^="mailto:"]')
@@ -55,7 +55,7 @@ def email(companies, pureCompanies):
                             continue
                     else:
                         print("Contact page not found")
+                    driver.quit()
             except requests.exceptions.RequestException as e:
                 print("Site is unavailable:", e)
-            driver.quit()
     print("Emails parsed successfully")
