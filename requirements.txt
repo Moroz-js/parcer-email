@@ -1,0 +1,4 @@
+random-user-agent==1.0.1
+requests==2.28.1
+selenium==4.10.0
+undetected-chromedriver==3.5.0
